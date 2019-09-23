@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.youzan.cloud:open-sdk-gen:1.0.5.201909191215-RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/youzan/cloud/open-sdk-gen/1.0.5.201909191215-RELEASE/open-sdk-gen-1.0.5.201909191215-RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/youzan/cloud/open-sdk-gen/1.0.5.201909191215-RELEASE/open-sdk-gen-1.0.5.201909191215-RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/youzan/cloud/open-sdk-gen/1.0.5.201909191215-RELEASE/open-sdk-gen-1.0.5.201909191215-RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

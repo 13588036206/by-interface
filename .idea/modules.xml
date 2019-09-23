@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gy-dao/gy-dao.iml" filepath="$PROJECT_DIR$/gy-dao/gy-dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gy-interface.iml" filepath="$PROJECT_DIR$/gy-interface.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gy-service/gy-service.iml" filepath="$PROJECT_DIR$/gy-service/gy-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gy-util/gy-util.iml" filepath="$PROJECT_DIR$/gy-util/gy-util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gy-web/gy-web.iml" filepath="$PROJECT_DIR$/gy-web/gy-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-config/by-config.iml" filepath="$PROJECT_DIR$/by-config/by-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-dao/by-dao.iml" filepath="$PROJECT_DIR$/by-dao/by-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-interface.iml" filepath="$PROJECT_DIR$/by-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-service/by-service.iml" filepath="$PROJECT_DIR$/by-service/by-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-util/by-util.iml" filepath="$PROJECT_DIR$/by-util/by-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/by-web/by-web.iml" filepath="$PROJECT_DIR$/by-web/by-web.iml" />
     </modules>
   </component>
 </project>
