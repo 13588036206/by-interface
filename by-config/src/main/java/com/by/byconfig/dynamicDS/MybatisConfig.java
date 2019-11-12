@@ -45,6 +45,7 @@ public class MybatisConfig {
                 mainDs.setIdleConnectionTestPeriod(60);//每60秒检查所有连接池中的空闲连接
                 mainDs.setMaxIdleTime(60); //最大空闲时间,60秒内未使用则连接被丢弃。
                 mainDs.setMaxPoolSize(100);//连接池中保留的最大连接数
+                DynamicDataSourceContextHolder.dbMap.put("main","main");
                 dataSourceMap.put("main", mainDs);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -56,22 +57,25 @@ public class MybatisConfig {
             String password = dataSourceConfig.getPassword();
             Class.forName(driverClassName);
             connection = DriverManager.getConnection(url, username, password);
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT a.gsdm,b.dburl,b.dbloginname,b.dbpassword,b.dbdriver " +
-                    "from ca_crm a INNER JOIN ca_db b on a.dbid = b.dbid");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT b.dbid,a.gsdm,b.dburl,b.dbloginname,b.dbpassword,b.dbdriver " +
+                    "from ca_crm a INNER JOIN ca_db b on a.dbid = b.dbid where b.dbtype='2'  and isnull(b.cpversion,'') not like '%停用%'");
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
-                ComboPooledDataSource ds = new ComboPooledDataSource();
                 try {
-                    ds.setDriverClass(resultSet.getString("dbdriver"));
-                    ds.setUser(resultSet.getString("dbloginname"));
-                    ds.setPassword(resultSet.getString("dbpassword"));
-                    ds.setJdbcUrl(resultSet.getString("dburl"));
-                    ds.setAutomaticTestTable("Test");
-                    ds.setAcquireIncrement(3); //当连接池中的连接耗尽的时候c3p0一次同时获取的连接数
-                    ds.setIdleConnectionTestPeriod(60);//每60秒检查所有连接池中的空闲连接
-                    ds.setMaxIdleTime(60); //最大空闲时间,60秒内未使用则连接被丢弃。
-                    ds.setMaxPoolSize(100);//连接池中保留的最大连接数
-                    dataSourceMap.put(resultSet.getString("gsdm"), ds);
+                    DynamicDataSourceContextHolder.dbMap.put(resultSet.getString("gsdm"),resultSet.getString("dbid"));
+                    if (!dataSourceMap.containsKey(resultSet.getString("dbid"))) {
+                        ComboPooledDataSource ds = new ComboPooledDataSource();
+                        ds.setDriverClass(resultSet.getString("dbdriver"));
+                        ds.setUser(resultSet.getString("dbloginname"));
+                        ds.setPassword(resultSet.getString("dbpassword"));
+                        ds.setJdbcUrl(resultSet.getString("dburl"));
+                        ds.setAutomaticTestTable("Test");
+                        ds.setAcquireIncrement(3); //当连接池中的连接耗尽的时候c3p0一次同时获取的连接数
+                        ds.setIdleConnectionTestPeriod(60);//每60秒检查所有连接池中的空闲连接
+                        ds.setMaxIdleTime(60); //最大空闲时间,60秒内未使用则连接被丢弃。
+                        ds.setMaxPoolSize(100);//连接池中保留的最大连接数
+                        dataSourceMap.put(resultSet.getString("dbid"), ds);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

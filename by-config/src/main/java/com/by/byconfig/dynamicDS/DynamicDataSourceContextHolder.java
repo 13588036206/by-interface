@@ -1,8 +1,6 @@
 package com.by.byconfig.dynamicDS;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * 动态数据源上下文
@@ -10,6 +8,8 @@ import java.util.List;
  * @date Oct 31, 2018
  */
 public class DynamicDataSourceContextHolder {
+
+    public static  Map<String,String> dbMap = new HashMap<>();
 
     private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>() {
         /**
@@ -31,7 +31,7 @@ public class DynamicDataSourceContextHolder {
      * @param key
      */
     public static void setDataSourceKey(String key) {
-        contextHolder.set(key);
+        contextHolder.set(dbMap.get(key));
     }
 
     /**

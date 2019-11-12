@@ -44,7 +44,7 @@ public class AES {
     public static String decrypt(String message,String key){
         String decryResult = null;
         try {
-            //message = URLDecoder.decode(message, "GBK");
+            message = URLDecoder.decode(message, "GBK");
             byte[] bytes = new BASE64Decoder().decodeBuffer(message);
             decryResult= AES.AESDecrypt(bytes, key);
         }catch (Exception e) {

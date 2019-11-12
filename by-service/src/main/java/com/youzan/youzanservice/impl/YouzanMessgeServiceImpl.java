@@ -22,15 +22,7 @@ public class YouzanMessgeServiceImpl implements IYouzanMessageService {
 
     @Override
     public void saveMessage(YouzanMessage youzanMessage) {
-        try {
-            if(Optional.ofNullable(youzanMessageMapper.selectByOrderNo(youzanMessage.getOrderno())).isPresent()){
-                youzanMessageMapper.updateByOrderNo(youzanMessage);
-            }else{
-                youzanMessageMapper.insert(youzanMessage);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        youzanMessageMapper.insert(youzanMessage);
     }
 
     @Override

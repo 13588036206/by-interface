@@ -10,6 +10,8 @@ public class BaseRespBean {
     public static String ERRORCODE="-1";
     public static String SUCCESS="SUCCESS";
     public static String ERROR="ERROR";
+    public static String UNIQUEERRORCODE="-2";
+    public static String UNIQUEERROR="UNIQUEERROR";
 
     public BaseRespBean() {
         this.code = BaseRespBean.SUCCESSCODE;
